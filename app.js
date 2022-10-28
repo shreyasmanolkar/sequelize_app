@@ -14,10 +14,7 @@ db.authenticate()
 
 const app = express();
 
-// app.set('views', path.join(__dirname, 'views'));
-
 // handlebars
-// app.engine('handlebars', exphbs.engine({ defaultLayout: 'main'}));
 app.engine(
     "handlebars",
     exphbs.engine({
@@ -28,8 +25,12 @@ app.engine(
   );
 app.set('view engine', 'handlebars');
 
+// Body parser 
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // SET static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 app.get('/', (req, res)=>{
